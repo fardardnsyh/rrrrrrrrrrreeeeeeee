@@ -1,0 +1,37 @@
+---
+import Section from "@/components/Section.astro";
+import { experience } from "@/data/es.json";
+---
+
+<Section>
+  <div class="flex flex-col space-y-2">
+    <div class="w-full border-b-2 pb-1 border-gray-300">
+      <h3 class="font-bold">Experiencia</h3>
+    </div>
+    {
+      experience.map((job) => (
+        <article>
+          <header>
+            <div>
+              <div class="flex justify-between w-full font-medium">
+                <h4>{job.company}</h4>
+                <h5>{job.date}</h5>
+              </div>
+              <h5 class="text-gray-800">{job.position}</h5>
+            </div>
+          </header>
+          <footer class="space-y-1">
+            <ul class="list-disc list-inside">
+              {job.tasks.map((task) => (
+                <li class="text-gray-800">{task}</li>
+              ))}
+            </ul>
+            <p class="text-gray-800">
+              <span class="font-medium">Stack:</span> {job.technologies.join(", ")}
+            </p>
+          </footer>
+        </article>
+      ))
+    }
+  </div>
+</Section>

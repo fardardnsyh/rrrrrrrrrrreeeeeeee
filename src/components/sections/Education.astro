@@ -1,0 +1,27 @@
+---
+import Section from "@/components/Section.astro"
+import { education } from "@/data/es.json"
+---
+
+<Section>
+  <div class="flex flex-col space-y-2">
+    <div class="w-full border-b-2 pb-1 border-gray-300">
+      <h3 class="font-bold">Educación</h3>
+    </div>
+    {education.map((school) => (
+      <article>
+        <header>
+          <div>
+            <div class="flex justify-between w-full font-medium">
+              <h4>{school.institution}</h4>
+              <h5>{school.date}</h5>
+            </div>
+          </div>
+        </header>
+        <footer>
+          <p class="text-gray-800">{school.degree}</p>
+        </footer>
+      </article>
+    ))
+  </div>
+</Section>
